@@ -188,7 +188,7 @@ import axios from 'axios'
     (error) => new Error(`${error}`)
   )
 
-  const result = await asyncFunc() // returns a Promise of an E.Either
+  const result = await asyncFunc() // returns a Promise of an E.Either (E.Right)
   
   // const quote = result.right.data.quote
   // TypeScript doesn't want us to access .right
@@ -301,6 +301,7 @@ const TEChain = TE.chain((result) => TE.right(result)) // returns an instance of
 
   // If TE.mapLeft is passed a Left (the axios call fails), the callback is run
   // TE.mapLeft returns a new Left holding the return value from the callback
+  // Can be used to intercept an error and return a custom error
 
   const result = await asyncFunc()
 })()
@@ -311,6 +312,19 @@ const TEChain = TE.chain((result) => TE.right(result)) // returns an instance of
 // A discriminated union of a None and Some
 import * as O from 'fp-ts/lib/Option'
 
+
+/////////////////////////////////////////////////////////
+const myOption1 = O.some(5)
+const myOption2 = O.none
+
+const resultO6 = O.toNullable(myOption1) // returns 5
+const resultO7 = O.isSome(myOption1) // returns a true
+
+const resultO8 = O.toNullable(myOption2) // return null
+const resultO9 = O.isSome(myOption2) // returns a false
+
+
+/////////////////////////////////////////////////////////
 const foo = {
   bar: 'a string'
 }
@@ -362,3 +376,5 @@ const resultO5 = pipe(
 )
 
 'breakpoint'
+
+///////////////////////////////////////////////////
