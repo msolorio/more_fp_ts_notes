@@ -4,7 +4,7 @@ https://github.com/enricopolanski/functional-programming#definition-of-a-magma
 
 A magma is an algebra with
 - a set or type (A)
-- a concat operation
+- a binary closed operation to A (the concat operation)
 - no laws to obay
 
 ```ts
@@ -12,6 +12,25 @@ interface Magma<A> {
   readonly concat: (first: A, second: A) => A
 }
 ```
+
+### Closed Operation
+A function that returns the same type as its inputs.
+```ts
+const concat = (first: A, second: A) => A
+```
+`concat` is a **combinator** for type `A`
+ 
+#### Associativity
+An operation is associative if the order in which inputs are combined does not matter
+
+```ts
+// associative
+1 + (2 + 3) + 4 === (1 + 2) + (3 + 4)
+
+// not associative
+(5 - 4) - 3 !== 5 - (4 - 3)
+```
+
 
 ### Semigroup
 https://github.com/enricopolanski/functional-programming#definition-of-a-semigroup
