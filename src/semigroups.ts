@@ -89,3 +89,7 @@ const result2 = reverse(Str.Semigroup).concat('a', 'b')
 
 ''
 
+const getFirstSemigroup = <A>(): Semigroup<A> => {
+  return { concat: (x, y) => x }
+}
+
