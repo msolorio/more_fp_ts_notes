@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { pipe } from 'fp-ts/lib/function'
 import * as TE from 'fp-ts/lib/taskEither'
-import * as E from 'fp-ts/lib/Either'
+// import * as E from 'fp-ts/lib/Either'
 import * as O from 'fp-ts/lib/Option'
 
 const firstPlanetUrl = 'http://swapi.dev/api/planets/1'
@@ -37,8 +37,7 @@ const getPlanet = pipe(
 
 ;(async () => {
   const result = await getPlanet()
+
+  console.log('result ==>', result)
 })()
-
-// const result = O.fromPredicate(a => !!a)(null)
-
 ''
